@@ -141,8 +141,8 @@ const Game = {
                 this.player.playerPos.left + this.player.playerSize.w >=
                 this.elevatorPlatforms[i].elevatorPlatformsPos.left &&
 
-                this.player.playerPos.left <= this.elevatorPlatforms[i].elevatorPlatformsPos.left +
-                this.elevatorPlatforms[i].elevatorPlatformsSize.w &&
+                this.player.playerPos.left <=
+                this.elevatorPlatforms[i].elevatorPlatformsPos.left + this.elevatorPlatforms[i].elevatorPlatformsSize.w &&
 
                 this.player.playerPos.top + this.player.playerSize.h >=
                 this.elevatorPlatforms[i].elevatorPlatformsPos.top - this.platformsDistance &&
@@ -151,35 +151,41 @@ const Game = {
                 this.elevatorPlatforms[i].elevatorPlatformsPos.top
             ) {
                 console.log("estoy bajando")
-                this.player.playerPos.top = 0
 
+                this.player.playerVel.top = this.elevatorPlatforms[i].elevatorPlatformsVel.top - 0.1
 
-                // } else if (
-                //     this.player.playerPos.left + this.player.playerSize.w >=
-                //     this.elevatorPlatforms[i].elevatorPlatformsPos.left &&
-
-                //     this.player.playerPos.left <=
-                //     this.elevatorPlatforms[i].elevatorPlatformsPos.left + this.elevatorPlatforms[i].elevatorPlatformsSize.w &&
-
-                //     this.player.playerPos.top + this.player.playerSize.h <
-                //     this.elevatorPlatforms[i].elevatorPlatformsPos.top
-                // ) {
-                //     this.player.playerPos.base += this.player.playerVel.top
-                //     this.player.updatePosition()
-                //     console.log("Estoy bajando")
             }
         }
         //DETECTA LA COLISIÓN CON LAS PLATAFORMAS QUE SUBEN
         for (let i = 0; i < this.elevatorPlatformsUp.length; i++) {
             if (
-                this.player.playerPos.left + this.player.playerSize.w >= this.elevatorPlatformsUp[i].elevatorPlatformsUpPos.left &&
-                this.player.playerPos.left <= this.elevatorPlatformsUp[i].elevatorPlatformsUpPos.left + this.elevatorPlatformsUp[i].elevatorPlatformsUpSize.w &&
-                this.player.playerPos.top + this.player.playerSize.h >= this.elevatorPlatformsUp[i].elevatorPlatformsUpPos.top - this.platformsDistance &&
-                this.player.playerPos.top + this.player.playerSize.h <= this.elevatorPlatformsUp[i].elevatorPlatformsUpPos.top
+                this.player.playerPos.left + this.player.playerSize.w >=
+                this.elevatorPlatformsUp[i].elevatorPlatformsUpPos.left &&
+
+                this.player.playerPos.left <=
+                this.elevatorPlatformsUp[i].elevatorPlatformsUpPos.left + this.elevatorPlatformsUp[i].elevatorPlatformsUpSize.w &&
+
+                this.player.playerPos.top + this.player.playerSize.h >=
+                this.elevatorPlatformsUp[i].elevatorPlatformsUpPos.top - this.platformsDistance &&
+
+                this.player.playerPos.top + this.player.playerSize.h <=
+                this.elevatorPlatformsUp[i].elevatorPlatformsUpPos.top
             ) {
-                console.log("Estoy subiendo!!!")
+                this.player.playerVel.top = (this.elevatorPlatformsUp[i].elevatorPlatformsUpVel.top + 0.1) * -1
             }
         }
+
+        //DETECTA LA COLISIÓN CON LA PLATAFORMA MÓVIL
+        // if (
+        //     this.player.playerPos.top + this.player.playerSize.h ===
+        //     this.movingPlatforms.movingPlatformsPos.top &&
+
+        //     this.player.playerPos.left <=
+        //     this.movingPlatforms.movingPlatformsPos.left + this.movingPlatforms.movingPlatformsSize.w &&
+
+        //     this.player.playerPos.left + this.player.playerSize.w >=
+        //     this.movingPlatforms.movingPlatformsPos.left
+        // )
 
 
 
