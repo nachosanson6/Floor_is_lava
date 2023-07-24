@@ -6,7 +6,7 @@ class ElevatorPlatformsUp {
         this.playerSize = playerSize;
 
         this.elevatorPlatformsUpSize = {
-            w: 150,
+            w: 100,
             h: 20
         }
         this.elevatorPlatformsUpPos = {

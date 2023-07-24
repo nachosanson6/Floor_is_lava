@@ -6,7 +6,7 @@ class MovingPlatform {
         this.playerSize = playerSize;
 
         this.movingPlatformsSize = {
-            w: 250,
+            w: 150,
             h: 20
         }
         this.movingPlatformsPos = {

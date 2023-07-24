@@ -62,19 +62,9 @@ class Player {
         this.playerPos.left += this.playerVel.left
     }
 
-    jumpRight() {
-
-    }
-    // moveUp() {
-    //     this.playerPos.top -= this.playerVel.top
-    // }
-
-    // moveDown() {
-    //     this.playerPos.top += this.playerVel.top
-    // }
 
     jump() {
-        this.playerPos.top -= 150
+        this.playerPos.top -= 100
         // this.playerPos.left += this.playerVel.left
         // this.playerVel.top += this.playerVel.gravity    // <--
         // this.playerPos.top += this.playerVel.top

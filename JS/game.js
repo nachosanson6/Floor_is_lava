@@ -17,7 +17,7 @@ const Game = {
     keys: { LEFT: 'ArrowLeft', RIGHT: 'ArrowRight', UP: 'ArrowUp', DOWN: 'ArrowDown', SPACE: 'Space' },
 
     elevatorPlatformsDensity: 100,
-    platformsDistance: 3,
+    platformsDistance: 4,
     collision: "",
 
     init() {
@@ -48,17 +48,11 @@ const Game = {
                     this.player.moveRight()
                     break;
 
-                // case this.keys.UP:
-                //     this.player.moveUp()
-                //     break;
-
-                // case this.keys.DOWN:
-                //     this.player.moveDown()
-                //     break;
-
                 case this.keys.SPACE:
                     this.player.jump()
                     break;
+
+                //case this.keys.LEFT && this.keys.        
             }
 
         }
@@ -77,8 +71,8 @@ const Game = {
         this.frameCounter > 5000 ? this.frameCounter = 0 : this.frameCounter++
         this.drawAll()
         this.clearAll()
-        this.isCollision()
         this.generateElevatorPlatforms()
+        this.isCollision()
         window.requestAnimationFrame(() => this.gameLoop())
     },
 
@@ -117,12 +111,15 @@ const Game = {
 
     isCollision() {
         //DETECTA LA PLATAFORMA INICIAL
-        // PROBAR A PONER === CUANDO QUERAMOS QUE EL PLAYER ESTÉ SOBRE LA PLATFORM, EN VEZ DE <= O >=
-
         if (
-            this.player.playerPos.left < this.fixedPlatforms.fixedPlatformsPos.left + this.fixedPlatforms.fixedPlatformsSize.w &&
-            this.player.playerPos.top + this.player.playerSize.h <= this.fixedPlatforms.fixedPlatformsPos.top &&
-            this.player.playerPos.top + this.player.playerSize.h >= this.fixedPlatforms.fixedPlatformsPos.top - this.platformsDistance
+            this.player.playerPos.left <=
+            this.fixedPlatforms.fixedPlatformsPos.left + this.fixedPlatforms.fixedPlatformsSize.w &&
+
+            this.player.playerPos.top + this.player.playerSize.h <=
+            this.fixedPlatforms.fixedPlatformsPos.top &&
+
+            this.player.playerPos.top + this.player.playerSize.h >=
+            this.fixedPlatforms.fixedPlatformsPos.top - this.platformsDistance
         ) {
 
             this.player.playerVel.top = -0.1
@@ -136,6 +133,10 @@ const Game = {
         for (let i = 0; i < this.elevatorPlatforms.length; i++) {
 
             if (
+                // this.player.playerPos.left < this.elevatorPlatforms[i].elevatorPlatformsPos.left + this.elevatorPlatforms[i].elevatorPlatformsSize.w &&
+                // this.player.playerPos.left + this.player.playerSize.w > this.elevatorPlatforms[i].elevatorPlatformsPos.left &&
+                // this.player.playerPos.top < this.elevatorPlatforms[i].elevatorPlatformsPos.top + this.elevatorPlatforms[i].elevatorPlatformsSize.h &&
+                // this.player.playerSize.h + this.player.playerPos.top > this.elevatorPlatforms[i].elevatorPlatformsPos.top
                 this.player.playerPos.left + this.player.playerSize.w >=
                 this.elevatorPlatforms[i].elevatorPlatformsPos.left &&
 
@@ -156,6 +157,10 @@ const Game = {
         //DETECTA LA COLISIÓN CON LAS PLATAFORMAS QUE SUBEN
         for (let i = 0; i < this.elevatorPlatformsUp.length; i++) {
             if (
+                // this.player.playerPos.left < this.elevatorPlatformsUp[i].elevatorPlatformsUpPos.left + this.elevatorPlatformsUp[i].elevatorPlatformsUpSize.w &&
+                // this.player.playerPos.left + this.player.playerSize.w > this.elevatorPlatformsUp[i].elevatorPlatformsUpPos.left &&
+                // this.player.playerPos.top < this.elevatorPlatformsUp[i].elevatorPlatformsUpPos.top + this.elevatorPlatformsUp[i].elevatorPlatformsUpSize.h &&
+                // this.player.playerSize.h + this.player.playerPos.top > this.elevatorPlatformsUp[i].elevatorPlatformsUpPos.top
                 this.player.playerPos.left + this.player.playerSize.w >=
                 this.elevatorPlatformsUp[i].elevatorPlatformsUpPos.left &&
 
@@ -174,6 +179,10 @@ const Game = {
 
         //DETECTA LA COLISIÓN CON LA PLATAFORMA MÓVIL
         if (
+            // this.player.playerPos.left < this.movingPlatforms.movingPlatformsPos.left + this.movingPlatforms.movingPlatformsSize.w &&
+            // this.player.playerPos.left + this.player.playerSize.w > this.movingPlatforms.movingPlatformsPos.left &&
+            // this.player.playerPos.top < this.movingPlatforms.movingPlatformsPos.top + this.movingPlatforms.movingPlatformsSize.h &&
+            // this.player.playerSize.h + this.player.playerPos.top > this.movingPlatforms.movingPlatformsPos.top
             this.player.playerPos.top + this.player.playerSize.h <=
             this.movingPlatforms.movingPlatformsPos.top &&
 
@@ -188,14 +197,11 @@ const Game = {
         ) {
             console.log("hellooooo!!")
             this.player.playerVel.top = -0.1
-            // this.player.playerPos.left += this.movingPlatforms.movingPlatformsVel.left
+            this.player.playerPos.left += this.movingPlatforms.movingPlatformsVel.left
             console.log(this.player.playerPos.left)
             console.log(this.movingPlatforms.movingPlatformsPos.left)
 
         }
-
-
-
 
 
     }

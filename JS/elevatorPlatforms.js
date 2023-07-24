@@ -7,7 +7,7 @@ class ElevatorPlatforms {
 
 
         this.elevatorPlatformsSize = {
-            w: 150,
+            w: 100,
             h: 20
         }
         this.elevatorPlatformsPos = {
