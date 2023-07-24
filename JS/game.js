@@ -124,10 +124,8 @@ const Game = {
             this.player.playerPos.top + this.player.playerSize.h <= this.fixedPlatforms.fixedPlatformsPos.top &&
             this.player.playerPos.top + this.player.playerSize.h >= this.fixedPlatforms.fixedPlatformsPos.top - this.platformsDistance
         ) {
-            console.log("estoy encima")
 
             this.player.playerVel.top = -0.1
-
 
         }
         else {
@@ -150,7 +148,6 @@ const Game = {
                 this.player.playerPos.top + this.player.playerSize.h <=
                 this.elevatorPlatforms[i].elevatorPlatformsPos.top
             ) {
-                console.log("estoy bajando")
 
                 this.player.playerVel.top = this.elevatorPlatforms[i].elevatorPlatformsVel.top - 0.1
 
@@ -176,16 +173,26 @@ const Game = {
         }
 
         //DETECTA LA COLISIÓN CON LA PLATAFORMA MÓVIL
-        // if (
-        //     this.player.playerPos.top + this.player.playerSize.h ===
-        //     this.movingPlatforms.movingPlatformsPos.top &&
+        if (
+            this.player.playerPos.top + this.player.playerSize.h <=
+            this.movingPlatforms.movingPlatformsPos.top &&
 
-        //     this.player.playerPos.left <=
-        //     this.movingPlatforms.movingPlatformsPos.left + this.movingPlatforms.movingPlatformsSize.w &&
+            this.player.playerPos.top + this.player.playerSize.h >=
+            this.movingPlatforms.movingPlatformsPos.top - this.platformsDistance &&
 
-        //     this.player.playerPos.left + this.player.playerSize.w >=
-        //     this.movingPlatforms.movingPlatformsPos.left
-        // )
+            this.player.playerPos.left <=
+            this.movingPlatforms.movingPlatformsPos.left + this.movingPlatforms.movingPlatformsSize.w &&
+
+            this.player.playerPos.left + this.player.playerSize.w >=
+            this.movingPlatforms.movingPlatformsPos.left
+        ) {
+            console.log("hellooooo!!")
+            this.player.playerVel.top = -0.1
+            // this.player.playerPos.left += this.movingPlatforms.movingPlatformsVel.left
+            console.log(this.player.playerPos.left)
+            console.log(this.movingPlatforms.movingPlatformsPos.left)
+
+        }
 
 
 

@@ -7,8 +7,8 @@ class Player {
 
 
         this.playerSize = {
-            w: 100,
-            h: 100
+            w: 50,
+            h: 50
         }
 
         this.playerPos = {

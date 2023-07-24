@@ -8,7 +8,7 @@ class FixedPlatform {
         this.playerSize = playerSize;
 
         this.fixedPlatformsSize = {
-            w: 150,
+            w: 90,
             h: 600
         }
         this.fixedPlatformsPos = {
