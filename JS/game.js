@@ -12,11 +12,12 @@ const Game = {
     elevatorPlatforms: [],
     elevatorPlatformsUp: [],
     fixedPlatforms: undefined,
+    movingPlatforms: undefined,
 
     keys: { LEFT: 'ArrowLeft', RIGHT: 'ArrowRight', UP: 'ArrowUp', DOWN: 'ArrowDown', SPACE: 'Space' },
 
     elevatorPlatformsDensity: 100,
-    platformsDistance: 2,
+    platformsDistance: 3,
     collision: "",
 
     init() {
@@ -69,12 +70,12 @@ const Game = {
         this.elevatorPlatforms = []
         this.elevatorPlatformsUp = []
         this.fixedPlatforms = new FixedPlatform(this.gameScreen, this.gameSize, this.playerPos, this.playerSize)
+        this.movingPlatforms = new MovingPlatform(this.gameScreen, this.gameSize, this.playerPos, this.playerSize)
     },
 
     gameLoop() {
         this.frameCounter > 5000 ? this.frameCounter = 0 : this.frameCounter++
         this.drawAll()
-
         this.clearAll()
         this.isCollision()
         this.generateElevatorPlatforms()
@@ -85,6 +86,7 @@ const Game = {
         this.player.move()
         this.elevatorPlatforms.forEach(Plat => Plat.move())
         this.elevatorPlatformsUp.forEach(Plat => Plat.move())
+        this.movingPlatforms.move()
 
     },
     generateElevatorPlatforms() {
@@ -114,15 +116,57 @@ const Game = {
     },
 
     isCollision() {
+        //DETECTA LA PLATAFORMA INICIAL
+        // PROBAR A PONER === CUANDO QUERAMOS QUE EL PLAYER ESTÉ SOBRE LA PLATFORM, EN VEZ DE <= O >=
+
+        if (
+            this.player.playerPos.left < this.fixedPlatforms.fixedPlatformsPos.left + this.fixedPlatforms.fixedPlatformsSize.w &&
+            this.player.playerPos.top + this.player.playerSize.h <= this.fixedPlatforms.fixedPlatformsPos.top &&
+            this.player.playerPos.top + this.player.playerSize.h >= this.fixedPlatforms.fixedPlatformsPos.top - this.platformsDistance
+        ) {
+            console.log("estoy encima")
+
+            this.player.playerVel.top = -0.1
+
+
+        }
+        else {
+            this.player.playerPos.base = this.gameSize.h - this.player.playerSize.h
+
+        }
         //DETECTA LA COLISIÓN CON LAS PLATAFORMAS QUE BAJAN
         for (let i = 0; i < this.elevatorPlatforms.length; i++) {
+
             if (
-                this.player.playerPos.left + this.player.playerSize.w >= this.elevatorPlatforms[i].elevatorPlatformsPos.left &&
-                this.player.playerPos.left <= this.elevatorPlatforms[i].elevatorPlatformsPos.left + this.elevatorPlatforms[i].elevatorPlatformsSize.w &&
-                this.player.playerPos.top + this.player.playerSize.h >= this.elevatorPlatforms[i].elevatorPlatformsPos.top - this.platformsDistance &&
-                this.player.playerPos.top + this.player.playerSize.h <= this.elevatorPlatforms[i].elevatorPlatformsPos.top
+                this.player.playerPos.left + this.player.playerSize.w >=
+                this.elevatorPlatforms[i].elevatorPlatformsPos.left &&
+
+                this.player.playerPos.left <= this.elevatorPlatforms[i].elevatorPlatformsPos.left +
+                this.elevatorPlatforms[i].elevatorPlatformsSize.w &&
+
+                this.player.playerPos.top + this.player.playerSize.h >=
+                this.elevatorPlatforms[i].elevatorPlatformsPos.top - this.platformsDistance &&
+
+                this.player.playerPos.top + this.player.playerSize.h <=
+                this.elevatorPlatforms[i].elevatorPlatformsPos.top
             ) {
-                console.log("Estoy bajando!!")
+                console.log("estoy bajando")
+                this.player.playerPos.top = 0
+
+
+                // } else if (
+                //     this.player.playerPos.left + this.player.playerSize.w >=
+                //     this.elevatorPlatforms[i].elevatorPlatformsPos.left &&
+
+                //     this.player.playerPos.left <=
+                //     this.elevatorPlatforms[i].elevatorPlatformsPos.left + this.elevatorPlatforms[i].elevatorPlatformsSize.w &&
+
+                //     this.player.playerPos.top + this.player.playerSize.h <
+                //     this.elevatorPlatforms[i].elevatorPlatformsPos.top
+                // ) {
+                //     this.player.playerPos.base += this.player.playerVel.top
+                //     this.player.updatePosition()
+                //     console.log("Estoy bajando")
             }
         }
         //DETECTA LA COLISIÓN CON LAS PLATAFORMAS QUE SUBEN
@@ -137,23 +181,7 @@ const Game = {
             }
         }
 
-        //DETECTA LA PLATAFORMA INICIAL
-        // PROBAR A PONER === CUANDO QUERAMOS QUE EL PLAYER ESTÉ SOBRE LA PLATFORM, EN VEZ DE <= O >=
-        if (
-            this.player.playerPos.left + this.player.playerSize.w <= this.fixedPlatforms.fixedPlatformsPos.left + this.fixedPlatforms.fixedPlatformsSize.w &&
-            this.player.playerPos.top + this.player.playerSize.h <= this.fixedPlatforms.fixedPlatformsPos.top &&
-            this.player.playerPos.top + this.player.playerSize.h >= this.fixedPlatforms.fixedPlatformsPos.top - this.platformsDistance
-        ) {
 
-            this.player.playerPos.base = this.fixedPlatforms.fixedPlatformsPos.top - this.player.playerSize.h
-            this.player.playerVel.top = 0
-
-
-        }
-        else {
-            //this.player.playerPos.base = this.gameSize.h - this.player.playerSize.h
-            // console.log("Me caigo!!!")
-        }
 
 
 

@@ -1,5 +1,5 @@
 class Player {
-    constructor(gameScreen, gameSize, collision) {
+    constructor(gameScreen, gameSize,) {
 
         this.gameScreen = gameScreen;
         this.gameSize = gameSize;
@@ -12,12 +12,12 @@ class Player {
         }
 
         this.playerPos = {
-            left: 50,
-            top: 100,        //REVISAR LAS MEDIDAS
-            base: this.gameSize.h - this.playerSize.h
+            left: 30,
+            top: 200 - this.playerSize.h,      //REVISAR LAS MEDIDAS
+            base: 100
         }
         this.playerVel = {
-            left: 50,
+            left: 20,
             top: 50,
             gravity: .05
         }
@@ -46,7 +46,7 @@ class Player {
             this.playerPos.top += this.playerVel.top;
 
         } else {
-            this.playerPos.top = this.playerPos.base;
+            // this.playerPos.top = this.playerPos.base;
             this.playerVel.top = 1;
         }
 
