@@ -11,7 +11,7 @@ class ElevatorPlatforms {
             h: 20
         }
         this.elevatorPlatformsPos = {
-            left: 200,
+            left: 170,
             top: 0
         }
 

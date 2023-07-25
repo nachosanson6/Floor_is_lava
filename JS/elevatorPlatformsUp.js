@@ -10,7 +10,7 @@ class ElevatorPlatformsUp {
             h: 20
         }
         this.elevatorPlatformsUpPos = {
-            left: this.gameSize.w - 350,
+            left: this.gameSize.w - 250,
             top: this.gameSize.h
         }
 

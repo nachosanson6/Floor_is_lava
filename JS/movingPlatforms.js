@@ -11,7 +11,7 @@ class MovingPlatform {
         }
         this.movingPlatformsPos = {
             left: this.gameSize.w - 700,
-            top: 400
+            top: 700
         }
 
         this.movingPlatformsVel = {

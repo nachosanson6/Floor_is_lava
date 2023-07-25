@@ -243,7 +243,7 @@ const Game = {
 
         }
         //colisiones con las fixedWalls
-        if (this.)
+        // if (this.)
     }
 
 
