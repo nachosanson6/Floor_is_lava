@@ -1,19 +1,17 @@
 class FixedWall1 {
 
-    constructor(gameScreen, gameSize, playerPos, playerSize) {
+    constructor(gameScreen, gameSize, width, height, left, top) {
 
         this.gameScreen = gameScreen;
         this.gameSize = gameSize;
-        this.playerPos = playerPos;
-        this.playerSize = playerSize;
 
         this.fixedWall1Size = {
-            w: 20,
-            h: 700
+            w: width,
+            h: height
         }
         this.fixedWall1Pos = {
-            left: 340,
-            top: this.gameSize.h / 2 + 250
+            left: left,
+            top: top
         }
 
         this.init()
@@ -24,6 +22,8 @@ class FixedWall1 {
         this.fixedWall1Element = document.createElement('div')
 
         this.fixedWall1Element.style.position = 'absolute'
+        this.fixedWall1Element.style.backgroundImage = `url(./Images/piedra.png)`
+        this.fixedWall1Element.style.backgroundSize = "none"
         this.fixedWall1Element.style.width = `${this.fixedWall1Size.w}px`
         this.fixedWall1Element.style.height = `${this.fixedWall1Size.h}px`
         this.fixedWall1Element.style.left = `${this.fixedWall1Pos.left}px`

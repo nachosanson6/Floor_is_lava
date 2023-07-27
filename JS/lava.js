@@ -24,6 +24,8 @@ class Lava {
         this.lavaElement = document.createElement('div')
 
         this.lavaElement.style.position = 'absolute'
+        this.lavaElement.style.backgroundImage = `url(./Images/lava.png)`
+        this.lavaElement.style.backgroundSize = "cover"
         this.lavaElement.style.width = `${this.lavaSize.w}px`
         this.lavaElement.style.height = `${this.lavaSize.h}px`
         this.lavaElement.style.left = `${this.lavaPos.left}px`

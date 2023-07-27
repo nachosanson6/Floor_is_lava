@@ -1,9 +1,7 @@
 class ElevatorPlatformsUp {
-    constructor(gameScreen, gameSize, playerPos, playerSize) {
+    constructor(gameScreen, gameSize) {
         this.gameScreen = gameScreen;
         this.gameSize = gameSize;
-        this.playerPos = playerPos;
-        this.playerSize = playerSize;
 
         this.elevatorPlatformsUpSize = {
             w: 100,
@@ -15,8 +13,7 @@ class ElevatorPlatformsUp {
         }
 
         this.elevatorPlatformsUpVel = {
-            top: 3,
-            gravity: .4
+            top: 2,
         }
 
         this.init()
@@ -27,12 +24,13 @@ class ElevatorPlatformsUp {
         this.elevatorPlatformsUpElement = document.createElement('div')
 
         this.elevatorPlatformsUpElement.style.position = 'absolute'
+        this.elevatorPlatformsUpElement.style.backgroundImage = `url(./Images/plataforma.png)`
+        this.elevatorPlatformsUpElement.style.backgroundSize = "cover"
         this.elevatorPlatformsUpElement.style.width = `${this.elevatorPlatformsUpSize.w}px`
         this.elevatorPlatformsUpElement.style.height = `${this.elevatorPlatformsUpSize.h}px`
         this.elevatorPlatformsUpElement.style.left = `${this.elevatorPlatformsUpPos.left}px`
         this.elevatorPlatformsUpElement.style.top = `${this.elevatorPlatformsUpPos.top}px`
-        this.elevatorPlatformsUpElement.style.backgroundColor = '#BA7A4B'
-        this.elevatorPlatformsUpElement.style.borderRadius = '10%'
+
 
 
         this.gameScreen.appendChild(this.elevatorPlatformsUpElement)

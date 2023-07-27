@@ -1,21 +1,21 @@
 class MovingPlatform {
-    constructor(gameScreen, gameSize, playerPos, playerSize) {
+    constructor(gameScreen, gameSize, left, top, vel) {
         this.gameScreen = gameScreen;
         this.gameSize = gameSize;
-        this.playerPos = playerPos;
-        this.playerSize = playerSize;
+
 
         this.movingPlatformsSize = {
             w: 150,
             h: 20
         }
+
         this.movingPlatformsPos = {
-            left: this.gameSize.w - 700,
-            top: 700
+            left: left,
+            top: top
         }
 
         this.movingPlatformsVel = {
-            left: 4,
+            left: vel,
 
         }
 
@@ -27,13 +27,12 @@ class MovingPlatform {
         this.movingPlatformsElement = document.createElement('div')
 
         this.movingPlatformsElement.style.position = 'absolute'
+        this.movingPlatformsElement.style.backgroundImage = `url(./Images/plataforma.png)`
+        this.movingPlatformsElement.style.backgroundSize = "cover"
         this.movingPlatformsElement.style.width = `${this.movingPlatformsSize.w}px`
         this.movingPlatformsElement.style.height = `${this.movingPlatformsSize.h}px`
         this.movingPlatformsElement.style.left = `${this.movingPlatformsPos.left}px`
         this.movingPlatformsElement.style.top = `${this.movingPlatformsPos.top}px`
-        this.movingPlatformsElement.style.backgroundColor = '#BA7A4B'
-        this.movingPlatformsElement.style.borderRadius = '10%'
-
 
         this.gameScreen.appendChild(this.movingPlatformsElement)
 
@@ -53,7 +52,7 @@ class MovingPlatform {
             this.movingPlatformsVel.left *= -1
         }
 
-        if (this.movingPlatformsPos.left + this.movingPlatformsSize.w >= 1050) {
+        if (this.movingPlatformsPos.left + this.movingPlatformsSize.w >= 1150) {
             this.movingPlatformsVel.left *= -1
         }
     }

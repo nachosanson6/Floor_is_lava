@@ -1,19 +1,18 @@
 class FixedPlatform {
 
-    constructor(gameScreen, gameSize, playerPos, playerSize) {
+    constructor(gameScreen, gameSize, width, height, left, top,) {
 
         this.gameScreen = gameScreen;
         this.gameSize = gameSize;
-        this.playerPos = playerPos;
-        this.playerSize = playerSize;
+
 
         this.fixedPlatformsSize = {
-            w: 90,
-            h: 600
+            w: width,
+            h: height
         }
         this.fixedPlatformsPos = {
-            left: 0,
-            top: 200
+            left: left,
+            top: top
         }
 
         this.init()
@@ -24,6 +23,8 @@ class FixedPlatform {
         this.fixedPlatformsElement = document.createElement('div')
 
         this.fixedPlatformsElement.style.position = 'absolute'
+        this.fixedPlatformsElement.style.backgroundImage = `url(./Images/piedra.png)`
+        this.fixedPlatformsElement.style.backgroundSize = "none"
         this.fixedPlatformsElement.style.width = `${this.fixedPlatformsSize.w}px`
         this.fixedPlatformsElement.style.height = `${this.fixedPlatformsSize.h}px`
         this.fixedPlatformsElement.style.left = `${this.fixedPlatformsPos.left}px`

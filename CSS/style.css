@@ -7,3 +7,28 @@
     position: relative;
     overflow: hidden;
 }
+
+#lose {
+    width: 300px;
+    height: 300px;
+    border: 5px solid;
+    display: none;
+    justify-content: center;
+    position: absolute;
+    top: 230px;
+    left: 600px;
+    background-image: url("../Images/castillo.png");
+}
+
+#win {
+    width: 300px;
+    height: 300px;
+    border: 5px solid;
+    display: none;
+    justify-content: center;
+    position: absolute;
+    top: 230px;
+    left: 600px;
+    background-image: url("../Images/key.png");
+
+}
