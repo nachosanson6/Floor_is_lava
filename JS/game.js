@@ -22,7 +22,7 @@ const Game = {
     keys: { LEFT: 'ArrowLeft', RIGHT: 'ArrowRight', UP: 'ArrowUp', DOWN: 'ArrowDown', SPACE: 'Space' },
 
     elevatorPlatformsDensity: 100,
-    enemiesDensity: 100,
+    enemiesDensity: 40,
     platformsDistance: 4,
     collision: "",
 
@@ -103,10 +103,10 @@ const Game = {
         this.fixedWall1.push(new FixedWall1(this.gameScreen, this.gameSize, 20, 430, 340, 0)) //izquierda arriba w/h/l/t
         this.fixedWall1.push(new FixedWall1(this.gameScreen, this.gameSize, 20, this.gameSize.h / 2.5 - 25, 1140, 150))// derecha
         this.fixedWall1.push(new FixedWall1(this.gameScreen, this.gameSize, 20, 100, 340, 650))//izquierda abajo
-        this.fixedPlatforms.push(new FixedPlatform(this.gameScreen, this.gameSize, 90, 600, 0, 200)) //primera
-        this.fixedPlatforms.push(new FixedPlatform(this.gameScreen, this.gameSize, 100, 20, 1350, 120)) //segunda
+        this.fixedPlatforms.push(new FixedPlatform(this.gameScreen, this.gameSize, 90, 650, 0, 200)) //primera
+        this.fixedPlatforms.push(new FixedPlatform(this.gameScreen, this.gameSize, 100, 20, 1440, 120)) //segunda
         this.fixedPlatforms.push(new FixedPlatform(this.gameScreen, this.gameSize, 150, 20, 360, 120)) //plataforma para la puerta
-        this.movingPlatforms.push(new MovingPlatform(this.gameScreen, this.gameSize, this.gameSize.w - 700, 700, 4))
+        this.movingPlatforms.push(new MovingPlatform(this.gameScreen, this.gameSize, this.gameSize.w - 700, 650, 4))
         this.movingPlatforms.push(new MovingPlatform(this.gameScreen, this.gameSize, this.gameSize.w - 1000, 200, 6))
         this.lava = new Lava(this.gameScreen, this.gameSize, this.playerPos, this.playerSize)
         this.door = new Door(this.gameScreen, this.gameSize)

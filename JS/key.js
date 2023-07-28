@@ -11,7 +11,7 @@ class Key {
         }
 
         this.keyPos = {
-            left: 1375,
+            left: 1460,
             top: 60
         }
         this.init()

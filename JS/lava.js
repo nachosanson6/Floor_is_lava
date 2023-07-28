@@ -13,7 +13,7 @@ class Lava {
         }
         this.lavaPos = {
             left: 0,
-            top: this.gameSize.h - 50
+            top: this.gameSize.h - 70
         }
 
         this.init()
